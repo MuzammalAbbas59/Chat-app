@@ -20,9 +20,19 @@ scroll_message = function () {
   if ($('#messages').length > 0) {
 
     $('#messages').scrollTop($('#messages')[0].scrollHeight);
-  }
+  };
 
-}
+};
+
+submit_message = function () {
+  $('#message_body').on('keydown',function(e){
+    if (e.keyCode==13){
+      $('button').click();
+      e.target.value = " ";
+    }
+  });
+};
+
 
 $(document).on("turbolinks:load", function () {
   $('.ui.dropdown')
@@ -34,6 +44,8 @@ $(document).on("turbolinks:load", function () {
         .transition('fade')
     });
   scroll_message();
+  submit_message();
+ 
 });
 
 
